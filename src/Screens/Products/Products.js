@@ -1,4 +1,5 @@
 import React from 'react'
+import Addproduct from '../../Components/AddProduct/Addproduct.js'
 import Showcards from '../../Components/ShowCards/Showcards.js'
 import Sidebar from '../../Components/Sidebar/Sidebar.js'
 import './products.css'
@@ -7,6 +8,7 @@ const Products = () => {
   const arr = [1, 2, 9, 3, 4, 5, 5, 6, 7, 5, 3]
   return (
     <div className='separator'>
+      <Addproduct />
       <div>
         <Sidebar />
       </div>
