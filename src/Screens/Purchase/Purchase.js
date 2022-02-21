@@ -1,3 +1,4 @@
+import Form from '../../Components/PurchaseForm/Form.js'
 import React from 'react'
 import Sidebar from '../../Components/Sidebar/Sidebar.js'
 import './purchase.css'
@@ -44,8 +45,19 @@ const Purchase = () => {
             </div>
           </div>
         </div>
-        <div>
-
+        <div className='smallPadding purchase_wrapper'>
+          <h2>Purchase</h2>
+          <div className='purchase__product-section purchase-form_header'>
+            <p>Name</p>
+            <p>Quantity</p>
+            <p>Unit Price</p>
+          </div>
+          <div className='purchase__product-section'>
+            <p>Name</p>
+            <p>Quantity</p>
+            <p>Unit Price</p>
+          </div>
+          <Form />
         </div>
       </div>
     </div>

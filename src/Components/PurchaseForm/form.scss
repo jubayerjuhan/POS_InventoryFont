@@ -1,0 +1,30 @@
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .error {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.purchaseForm input {
+  width: 100%;
+  height: 2rem;
+  outline: none;
+  padding: 0 0.5rem;
+  margin-bottom: 0.4rem;
+}
+.purchaseForm input[type="submit"] {
+  background-color: var(--blue);
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.purchaseForm {
+  font-family: "Poppins" sans-serif;
+}
