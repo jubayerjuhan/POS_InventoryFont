@@ -46,7 +46,12 @@ const Addproduct = () => {
                 </div>
               ))}
               <div className='appTextInput'>
-                <select name="catego" id=""></select>
+                <select name="category" id="" onChange={handleChange}>
+                  <option value="w">Select Category</option>
+                  <option value="e">Category 1</option>
+                  <option value="">Category 2</option>
+                  <option value="">Category 3</option>
+                </select>
               </div>
 
               <input type="submit" value="Submit" onClick={handleSubmit} />
