@@ -6,10 +6,10 @@ const client = axios.create({
 });
 
 
-const token = JSON.parse(localStorage.getItem("token"));
-if (token?.token) {
-  client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-}
+// const token = JSON.parse(localStorage.getItem("token"));
+// if (token?.token) {
+// client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+// }
 
 
 export default client;
