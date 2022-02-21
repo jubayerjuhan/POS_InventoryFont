@@ -11,7 +11,8 @@
   }
 }
 
-.purchaseForm input {
+.purchaseForm input,
+select {
   width: 100%;
   height: 2rem;
   outline: none;
@@ -23,6 +24,7 @@
   border: none;
   outline: none;
   color: white;
+  cursor: pointer;
 }
 
 .purchaseForm {

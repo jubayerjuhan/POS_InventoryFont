@@ -44,7 +44,7 @@ const Form = () => {
               name="supplier"
               id="supplier"
               className="form-control"
-              placeholder="Enter your name"
+              placeholder="Supplier Name"
               onChange={handleChange}
               onBlur={handleBlur}
             />
@@ -59,7 +59,7 @@ const Form = () => {
               name="discount"
               id="discount"
               className="form-control"
-              placeholder="Enter your name"
+              placeholder="Discount"
               onChange={handleChange}
               onBlur={handleBlur}
             />
@@ -75,7 +75,7 @@ const Form = () => {
               name="totalAmount"
               id="totalAmount"
               className="form-control"
-              placeholder="Enter your name"
+              placeholder="Total Amount"
               onChange={handleChange}
               onBlur={handleBlur}
             />
