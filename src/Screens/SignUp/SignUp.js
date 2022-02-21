@@ -33,7 +33,7 @@ const theme = createTheme();
 
 export default function SignUp() {
   const dispatch = useDispatch();
-  const { error, success } = useSelector(state => state.user);
+  const { error, isloggedin } = useSelector(state => state.user);
   const navigate = useNavigate()
 
 
