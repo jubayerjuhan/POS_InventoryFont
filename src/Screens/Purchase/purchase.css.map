@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,kBAAkB,CAAC;EACjB,OAAO,EAAE,IAAI;EACb,qBAAqB,EAAE,OAAO;CAC/B",
+    "sources": [
+        "purchase.scss"
+    ],
+    "names": [],
+    "file": "purchase.css"
+}

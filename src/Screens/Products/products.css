@@ -1,0 +1,35 @@
+.card__container {
+  margin-bottom: 2rem;
+}
+
+.card__container h1 {
+  font-size: 1.5rem;
+  color: var(--blue);
+}
+
+.product_card_wrapper {
+  border: 1px solid gray;
+}
+
+.product_card_wrapper img {
+  height: 100px;
+  width: 100px;
+}
+
+.product_card_wrapper h3 {
+  font-size: 12px;
+  text-align: center;
+  padding: 0.4rem;
+  border-top: 1px solid gray;
+}
+
+.cards_wrapper {
+  gap: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 1rem;
+}
+/*# sourceMappingURL=products.css.map */

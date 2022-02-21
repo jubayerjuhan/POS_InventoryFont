@@ -1,0 +1,14 @@
+.minicard {
+  width: fit-content;
+  padding: 1rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  border-radius: 16px;
+  color: white;
+}
+
+.minicard__icon {
+  font-size: 3rem;
+  color: white;
+}
