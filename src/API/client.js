@@ -1,8 +1,8 @@
 import axios from "axios";  // axios is a library that allows us to make HTTP requests
 
 const client = axios.create({
-  // baseURL: "https://inventory-ims.herokuapp.com/api/v1",
-  baseURL: "http://localhost:4000/api/v1",
+  baseURL: "https://inventory-ims.herokuapp.com/api/v1",
+  // baseURL: "http://localhost:4000/api/v1",
 });
 
 
