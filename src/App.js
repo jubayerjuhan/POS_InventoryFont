@@ -13,9 +13,13 @@ import { useDispatch } from 'react-redux'
 
 function App() {
   const dispatch = useDispatch();
-  // useEffect(() => {
-  // dispatch(loadUser());
-  // }, [])
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    if (token?.token) {
+      console.log(token.token)
+      dispatch(loadUser());
+    }
+  }, [])
   return (
     <div className="App">
       <Router>

@@ -1,10 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Form from '../../Components/PurchaseForm/Form.js'
 import SaleForm from '../../Components/SaleForm/SaleForm.js'
 import Sidebar from '../../Components/Sidebar/Sidebar.js'
+import { getAllCategories, getallProducts, getProductsWithCategory } from '../../Redux/Action/productaction.js'
 
 const SaleScreen = () => {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  const dispatch = useDispatch();
+  const { success } = useSelector(state => state.addSale)
+  const { categories } = useSelector(state => state.categories);
+  const { products } = useSelector(state => state.products);
+  const [selectedCategory, setSelectedCategory] = useState(categories ? categories[0] : '')
+  const [selectedProducts, setselectedProducts] = useState([])
+
+  useEffect(() => {
+    dispatch(getAllCategories());
+    dispatch(getallProducts());
+  }, [])
+
+  // show products after category click
+  let productsToShow = []
+  if (products) {
+    productsToShow = []
+    products?.forEach(item => {
+      if (item.category === selectedCategory._id) {
+        productsToShow.push(item)
+      }
+    })
+    console.log(productsToShow, 'gotcha')
+  }
+
+  // handle click of product
+  const handleProductClick = (product) => {
+    if (selectedProducts.find(item => item._id === product._id)) {
+      setselectedProducts(selectedProducts.filter(item => item._id !== product._id))
+    } else {
+      setselectedProducts([...selectedProducts, { ...product, quantity: 1 }])
+    }
+  }
+
+  // handle sale success
+  if (success) {
+    alert('Sale Success')
+    dispatch({ type: 'RESET_SUCCESS' })
+  }
+
   return (
     <div className='separator'>
       <div>
@@ -15,14 +55,10 @@ const SaleScreen = () => {
           <div className='card__container'>
             <h1>Categories</h1>
             <div className='cards_wrapper'>
-              <div className='product_card_wrapper'>
-                <img src="https://media.istockphoto.com/vectors/black-plus-sign-positive-symbol-vector-id688550958?k=20&m=688550958&s=612x612&w=0&h=wvzUqT3u3feYygOXg3GB9pYBbqIsyu_xpvfTX-6HOd0=" alt="" />
-                <h3>Add Category</h3>
-              </div>
-              {arr.map(item => (
-                <div className='product_card_wrapper'>
-                  <img src="https://fscl01.fonpit.de/devices/17/2017.png" alt="" />
-                  <h3>Product Name</h3>
+              {categories?.map(item => (
+                <div className='product_card_wrapper' key={item.name} onClick={() => setSelectedCategory(item)}>
+                  <img src={item.image} alt="" />
+                  <h3>{item.name}</h3>
                 </div>
               ))}
             </div>
@@ -32,32 +68,18 @@ const SaleScreen = () => {
           <div className='card__container'>
             <h1>Products</h1>
             <div className='cards_wrapper'>
-              <div className='product_card_wrapper'>
-                <img src="https://media.istockphoto.com/vectors/black-plus-sign-positive-symbol-vector-id688550958?k=20&m=688550958&s=612x612&w=0&h=wvzUqT3u3feYygOXg3GB9pYBbqIsyu_xpvfTX-6HOd0=" alt="" />
-                <h3>Add Products</h3>
-              </div>
-              {arr.map(item => (
-                <div className='product_card_wrapper'>
-                  <img src="https://fscl01.fonpit.de/devices/17/2017.png" alt="" />
-                  <h3>Product Name</h3>
+              {productsToShow.map(item => (
+                <div className='product_card_wrapper' key={item.name} onClick={() => handleProductClick(item)}>
+                  <img src={item.image} alt="" />
+                  <h3>{item.name}</h3>
                 </div>
               ))}
             </div>
           </div>
         </div>
         <div className='smallPadding purchase_wrapper'>
-          <h2>Sale</h2>
-          <div className='purchase__product-section purchase-form_header'>
-            <p>Name</p>
-            <p>Quantity</p>
-            <p>Unit Price</p>
-          </div>
-          <div className='purchase__product-section'>
-            <p>Name</p>
-            <p>Quantity</p>
-            <p>Unit Price</p>
-          </div>
-          <SaleForm />
+
+          <SaleForm selectedProducts={selectedProducts} setselectedProducts={setselectedProducts} />
         </div>
       </div>
     </div>

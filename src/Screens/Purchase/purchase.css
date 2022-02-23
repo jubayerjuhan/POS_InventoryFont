@@ -13,17 +13,19 @@
 .purchase__product-section {
   padding: 0.4rem;
   font-size: 0.9rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-bottom: 0.6rem;
 }
 
 .purchase-form_header {
   color: white;
   background-color: var(--blue);
+}
+
+.purchase__product-section input {
+  width: 50px;
 }
 /*# sourceMappingURL=purchase.css.map */

@@ -1,42 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Modal from '@mui/material/Modal';
-import './modal.css'
-import { Formik, useFormikContext } from 'formik';
+// import './modal.css'
+import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addproduct } from '../../Redux/Action/productaction.js';
+import { addCategory } from '../../Redux/Action/productaction.js';
 import { FaTimesCircle } from 'react-icons/fa'
-import { getAllCategories } from '../../Redux/Action/productaction.js'
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Field Required'),
-  purchasePrice: yup.number()
-    .typeError('you must specify a number').required('Field Required'),
-  salePrice: yup.number()
-    .typeError('you must specify a number').required('Field Required'),
-  category: yup.string().required('Field Required').required(),
   image: yup.string(),
-  discount: yup.number().typeError('you must specify a number')
+
 
 });
-const Addproduct = ({ open, setProductOpen }) => {
+const AddCategory = ({ open, setcategoryOpen }) => {
   const dispatch = useDispatch();
-  const { categories } = useSelector(state => state.categories);
-  const { success } = useSelector(state => state.addProduct);
-  const [image, setImage] = useState('');
+  const { success } = useSelector(state => state.addCategory);
   const fields = [
-    { name: 'name', label: 'Product Name' },
-    { name: 'purchasePrice', label: 'Purchase Price' },
-    { name: 'salePrice', label: 'Sale Price' },
-    { name: 'discount', label: 'Discount' },
+    { name: 'name', label: 'Category Name' },
   ]
 
-  console.log(categories, 'categories')
-
-  useEffect(() => {
-    dispatch(getAllCategories());
-  }, [])
-
+  const [image, setImage] = useState('');
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -59,14 +43,14 @@ const Addproduct = ({ open, setProductOpen }) => {
 
   // handle submit
   const handleFormSubmit = (values, image) => {
-    dispatch(addproduct(values, image));
+    dispatch(addCategory(values, image));
   }
 
 
   // handle success
   if (success) {
-    setProductOpen(false);
-    alert('Product Added Successfully');
+    setcategoryOpen(false);
+    alert('Category Added Successfully');
 
     setTimeout(() => {
       dispatch({ type: 'RESET_SUCCESS', });
@@ -82,11 +66,11 @@ const Addproduct = ({ open, setProductOpen }) => {
     >
       <div className='modal__container'>
         <div className='header'>
-          <h1>Add Product</h1>
-          <FaTimesCircle onClick={() => setProductOpen(false)} />
+          <h1>Add Category</h1>
+          <FaTimesCircle onClick={() => setcategoryOpen(false)} />
         </div>
         <Formik
-          initialValues={{ name: '', purchasePrice: '', salePrice: '', }}
+          initialValues={{ name: '', }}
           onSubmit={(values) => {
             handleFormSubmit(values, image)
           }}
@@ -101,7 +85,7 @@ const Addproduct = ({ open, setProductOpen }) => {
           }) => (
             <form action="" onSubmit={handleSubmit}>
               {fields.map(field => (
-                <div className='appTextInput'>
+                <div className='appTextInput' key={field.name}>
                   <input
                     type="text"
                     value={values[field.name]}
@@ -112,15 +96,7 @@ const Addproduct = ({ open, setProductOpen }) => {
                   {(errors[field.name] && touched[field.name]) && <p className='error'>{errors[field.name]}</p>}
                 </div>
               ))}
-              <div className='appTextInput'>
-                <select name="category" id="" onChange={handleChange}>
-                  <option value={null}>Select Category</option>
-                  {categories.map(category => (
-                    <option value={category._id}>{category.name}</option>
-                  ))}
-                </select>
-                {(errors.category && touched.category) && <p className='error'>{errors.category}</p>}
-              </div>
+
               <div className='appTextInput'>
                 <input
                   onChange={handleImageChange}
@@ -139,4 +115,4 @@ const Addproduct = ({ open, setProductOpen }) => {
   )
 }
 
-export default Addproduct
+export default AddCategory

@@ -9,10 +9,10 @@ const Sidebar = () => {
   const sidebarItems = [
     { name: 'Dashboard', icon: <BsFillHouseFill size={30} />, },
     { name: 'Products', icon: <BsFillHouseFill size={30} /> },
-    { name: 'Purchase', icon: <BsFillHouseFill size={30} /> },
     { name: 'Sale', icon: <BsFillHouseFill size={30} /> },
+    { name: 'Purchase', icon: <BsFillHouseFill size={30} /> },
     { name: 'Expense', icon: <BsFillHouseFill size={30} /> },
-    { name: 'Users', icon: <BsFillHouseFill size={30} /> },
+    { name: 'Sale List', icon: <BsFillHouseFill size={30} /> },
     { name: 'Settings', icon: <BsFillHouseFill size={30} /> },
   ]
   return (

@@ -62,6 +62,12 @@ export default function SignIn() {
     navigate('/');
   }
 
+  if (success) {
+    navigate('/');
+    window.location.reload();
+    dispatch({ type: 'CLEAR_SUCCESS' });
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
